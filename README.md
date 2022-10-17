@@ -18,8 +18,8 @@ Traceroute: A traceroute provides a map of how data on the internet travels from
 A traceroute works by sending Internet Control Message Protocol (ICMP) packets, and every router involved in transferring the data gets these packets. The ICMP packets provide information about whether the routers used in the transmission are able to effectively transfer the data.
 
 
-To run traceroute: 
-Open instance terminal and write: “traceroute [hostname]”
+To run traceroute: Open instance terminal and write: 
+	“traceroute [hostname]”
 Difference between ping and traceroute:
 Ping tells you if the server is reachable and time it takes to transmit and receive data while traceroute details the precise route info, router by router as well as time it took for each hop.
 
@@ -29,14 +29,14 @@ Create 2 EC2 instances - db-server and client-server
 ![ec2-ins](https://user-images.githubusercontent.com/64135078/196065265-1232882d-7277-460b-8a50-cf30c9ff7184.png)
 
 Connect to db-server and run update the install mysql-server software
-  sudo apt update -y && sudo apt install mysql-server -y
+	sudo apt update -y && sudo apt install mysql-server -y
 The enable mysql server using: 
-  sudo systemctl enable mysql
+	sudo systemctl enable mysql
   ![enable-mysql](https://user-images.githubusercontent.com/64135078/196065338-a00c6d84-058a-42bb-bf2f-85455413e2a3.png)
 
 Step 2:
 Connect to client-server and install mysql-client software
-sudo apt update -y && sudo apt install mysql-client -y
+	sudo apt update -y && sudo apt install mysql-client -y
 
 NB: 
 By default, both of your EC2 virtual servers are located in the same local virtual network, so they can communicate to each other using local IP addresses. Use mysql server's local IP address to connect from mysql client. MySQL server uses TCP port 3306 by default, so you will have to open it by creating a new entry in ‘Inbound rules’ in ‘mysql server’ Security Groups. For extra security, do not allow all IP addresses to reach your ‘mysql server’ – allow access only to the specific local IP address of your ‘mysql client’.
@@ -48,8 +48,8 @@ Important:
 Prepare mysql-server instance by running mysql security scripts command: 
 sudo mysql_secure_installation and set up right configuration
 - login to mysql:
-	Create user and database
-CREATE USER <username> and CREATE DATABASE <test_db>:
+- 	Create user and database
+	CREATE USER <username> and CREATE DATABASE <test_db>:
 
 And grant all permissions to the user.
 
@@ -60,18 +60,18 @@ To see available databases run SHOW DATABASES
 ![test-db](https://user-images.githubusercontent.com/64135078/196065441-46dd611a-b7c8-413e-be2f-cfafe25deda2.png)
 
 To view available table on test-db run:
-USE test-db;
-SHOW TABLES;
+	USE test-db;
+	SHOW TABLES;
 
 Configure mysql server to allow connection from remote hosts
 Replace ‘127.0.0.1’ to ‘0.0.0.0’
 ![remote-conn](https://user-images.githubusercontent.com/64135078/196065480-0384901c-7c1a-4587-ab61-315641fce7e0.png)
 
 Then restart mysql server: 
-Sudo systemctl restart mysql
+	Sudo systemctl restart mysql
 
 From the mysql client Linux Server connect remotely to the mysql server Database Engine without using SSH. You must use the mysql utility to perform this action:
-sudo mysql -u ‘mutemip’ -h <ip-address of mysql-server> -p
+	sudo mysql -u ‘mutemip’ -h <ip-address of mysql-server> -p
 
 Check successful connection to mysql-server from client-server:
 Run: show databases;
