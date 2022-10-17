@@ -53,7 +53,7 @@ CREATE USER <username> and CREATE DATABASE <test_db>:
 
 And grant all permissions to the user.
 
-grant all on test_db.* to 'mutemip'@'%' with grant option;
+	grant all on test_db.* to 'mutemip'@'%' with grant option;
 
 
 To see available databases run SHOW DATABASES
@@ -79,6 +79,9 @@ Run: show databases;
 
 From here (client-server)… you can see a test_db database which we created in mysql-server of ip: 172.31.94.34 as shown:
 ![mysql-server](https://user-images.githubusercontent.com/64135078/196065579-6c554c8d-4b14-4945-a74f-74aad3e8674e.png)
+
+
+An online Doc: https://docs.google.com/document/d/172ml50dpMhGbXAT8FFUwUMbvJo_A8ZEWcH8PKIY-anQ/edit?usp=sharing
 
 
 
